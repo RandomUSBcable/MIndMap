@@ -1,0 +1,16 @@
+
+.Header{
+    background-color: aqua;
+    margin: 0;
+    height: 10vh;
+  }
+  
+.Body{
+    background-color: red;
+    height: 70vh;
+  }
+  
+.Footer{
+    background-color: aliceblue;
+    height: 20vh;
+  }

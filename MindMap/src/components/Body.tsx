@@ -1,5 +1,7 @@
+import "./Components.css";
+
 function Body() {
-  return "body";
+  return <div className="Body">body</div>;
 }
 
 export default Body;
