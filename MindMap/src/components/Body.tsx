@@ -1,7 +1,11 @@
-import "./Components.css";
+import List from "./body/List.tsx";
 
 function Body() {
-  return <div className="Body">body</div>;
+  return (
+    <div className="Body">
+      <List />
+    </div>
+  );
 }
 
 export default Body;
