@@ -60,7 +60,7 @@ body{
 }
 
 .Body{
-  background-color: #535C91;
+  background-color: #720455;
   box-shadow: inset 0 0 3vh 0 black;
   height: 75vh;
 }
@@ -144,6 +144,21 @@ input, select, textarea{
   inset 0.2vh 0.2vh 0.7vh rgba(0,0,0,0.5);
 }
 
+
+
 ul{
   list-style: none;
+}
+
+.NoteAndButton{
+  display: flex;
+}
+
+.EditButtons{
+  display: flex;
+  align-items: center;
+}
+
+.Button{
+  border-radius: 2ch;
 }

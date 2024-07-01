@@ -105,22 +105,38 @@ const SortTheNoteList: React.FC<RecursiveListProps> = ({
     <ul>
       {items.map((item) => (
         <div className="NoteHolder">
-          <li
-            key={item.id}
-            className="Note"
-            onClick={() => console.log(item.id)}
-          >
-            {item.name}
-            <button onClick={() => onAdd(item.id)}>+</button>
-            <button onClick={() => onRemove(item.id)}>-</button>
-          </li>
-          {item.children && item.children.length > 0 && (
-            <SortTheNoteList
-              items={item.children}
-              onAdd={onAdd}
-              onRemove={onRemove}
-            />
-          )}
+          <div className="NoteAndButton">
+            <li
+              key={item.id}
+              className="Note"
+              onClick={() => {
+                const EditedName = prompt("Edit Name") || item.name;
+                item.name = EditedName;
+              }}
+            >
+              {item.name}
+            </li>
+            <div className="EditButtons">
+              <button className="Button" onClick={() => onAdd(item.id)}>
+                e
+              </button>
+              <button className="Button" onClick={() => onAdd(item.id)}>
+                +
+              </button>
+              <button className="Button" onClick={() => onRemove(item.id)}>
+                -
+              </button>
+            </div>
+          </div>
+          <div className="NextNote">
+            {item.children && item.children.length > 0 && (
+              <SortTheNoteList
+                items={item.children}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
+            )}
+          </div>
         </div>
       ))}
     </ul>

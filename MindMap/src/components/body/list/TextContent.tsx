@@ -187,8 +187,6 @@ const TextContent: React.FC = () => {
 
   return (
     <div>
-      <h1>Recursive List</h1>
-
       <SortTheNoteList items={data} onAdd={addItem} onRemove={removeItem} />
     </div>
   );
