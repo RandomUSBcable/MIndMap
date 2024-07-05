@@ -147,7 +147,6 @@ const SortTheNoteList: React.FC<RecursiveListProps> = ({
 export default SortTheNoteList;
 */
 
-import React, { useState } from "react";
 import TextField from "./TextField";
 
 interface ListItem {

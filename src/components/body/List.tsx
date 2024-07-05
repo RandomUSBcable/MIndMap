@@ -1,5 +1,4 @@
 import TextContent from "./list/TextContent.tsx";
-import NewText from "./list/NewText.tsx";
 
 function List() {
   return (
