@@ -82,6 +82,7 @@ const SortTheNoteList: React.FC<ItemProps> = ({ item }) => {
 export default SortTheNoteList;
 */
 
+/*
 import React, { useState } from "react";
 
 interface ListItem {
@@ -115,6 +116,73 @@ const SortTheNoteList: React.FC<RecursiveListProps> = ({
               }}
             >
               {item.name}
+            </li>
+            <div className="EditButtons">
+              <button className="Button" onClick={() => onAdd(item.id)}>
+                e
+              </button>
+              <button className="Button" onClick={() => onAdd(item.id)}>
+                +
+              </button>
+              <button className="Button" onClick={() => onRemove(item.id)}>
+                -
+              </button>
+            </div>
+          </div>
+          <div className="NextNote">
+            {item.children && item.children.length > 0 && (
+              <SortTheNoteList
+                items={item.children}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
+            )}
+          </div>
+        </div>
+      ))}
+    </ul>
+  );
+};
+
+export default SortTheNoteList;
+*/
+
+import React, { useState } from "react";
+import TextField from "./TextField";
+
+interface ListItem {
+  id: number[];
+  name: string;
+  children?: ListItem[];
+}
+
+interface RecursiveListProps {
+  items: ListItem[];
+  onAdd: (parentId: number[]) => void;
+  onRemove: (id: number[]) => void;
+}
+
+const HandleClick = (item: ListItem) => {
+  console.log(item.id);
+  return <TextField FilledText={item.name} />;
+};
+
+const SortTheNoteList: React.FC<RecursiveListProps> = ({
+  items,
+  onAdd,
+  onRemove,
+}) => {
+  return (
+    <ul>
+      {items.map((item) => (
+        <div className="NoteHolder">
+          <div className="NoteAndButton">
+            <li
+              //key={item.id}
+              className="Note"
+              onClick={() => HandleClick(item)}
+            >
+              <TextField FilledText={item.name} />
             </li>
             <div className="EditButtons">
               <button className="Button" onClick={() => onAdd(item.id)}>

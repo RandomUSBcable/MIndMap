@@ -1,5 +1,5 @@
 function NewText() {
-  return <div className="NewText">new Text</div>;
+  return <div className="NewText"></div>;
 }
 
 export default NewText;

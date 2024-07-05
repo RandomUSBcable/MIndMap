@@ -55,8 +55,11 @@ body{
   display: flex;
   color: white;
   align-items: center;
-  justify-content: space-around;
-  
+  justify-content: space-between;
+}
+
+body ::spelling-error {
+  text-decoration-line: none;
 }
 
 .Body{
@@ -70,27 +73,21 @@ body{
   height: 15vh;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-}
-
-.TextField{
-  background-color: black;
+  justify-content: space-evenly;
 }
 
 textarea, input{
   outline: none;
   border: none;
-  background-color: #535C91;
-  height: 7vh;
-  font-size: 4vh;
-  max-width: 66vw;
+  background-color: inherit;
   border-radius: 1vh;
-  padding: 1vh;
+
+  padding:1vh;
 }
 
 textarea:focus, input:focus {
 
-  background-color: #535C91;
+  background-color: inhert;
   outline: none;
 }
 
@@ -101,39 +98,44 @@ input, select, textarea{
 .ButtonB{
   font-weight: bolder;
   border: solid;
+  width: 3ch;
+  border-radius: 0.5ch;
 }
 
 .ButtonI{
   font-style: italic;
   border: solid;
+  width: 3ch;
+  border-radius: 0.5ch;
 }
 
 .ButtonU{
   text-decoration: underline;
   border: solid;
+  width: 3ch;
+  border-radius: 0.5ch;
 }
 
 .ButtonHolder{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 0.6vw;
+  padding: 0 1vw;
 }
 
 .Note{
   border-radius: 1vh;
-
   border-width: 0.1rem;
-
   background-color: inherit;
   box-shadow: -0.2vh -0.2vh 0.6vh rgba(255, 255, 255, 0.5),
    0.2vh 0.2vh 0.7vh rgba(0,0,0,0.7);
    /*inset -0.2vh -0.2vh 0.6vh #9290C3,
    inset 0.2vh 0.2vh 0.6vh #000000;*/
-
+   margin: 1vh;
   transition-duration: 0.2s;
   width: fit-content;
-  margin: 1vh;
-  padding:1.5vh;
+
+  backdrop-filter: blur(5px);
 }
 
 .Note:hover{
@@ -161,4 +163,8 @@ ul{
 
 .Button{
   border-radius: 2ch;
+}
+
+.LogoHolder{
+  padding: 0 5vw;
 }

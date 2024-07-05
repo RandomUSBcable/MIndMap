@@ -1,7 +1,9 @@
+import Logo from "./header/Logo";
+
 function Header() {
   return (
     <div className="Header">
-      <div>LOGO</div>
+      <Logo />
       <div>Menu</div>
     </div>
   );

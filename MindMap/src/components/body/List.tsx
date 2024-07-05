@@ -5,7 +5,6 @@ function List() {
   return (
     <div className="List" style={{ padding: "2vh" }}>
       <TextContent />
-      <NewText />
     </div>
   );
 }
