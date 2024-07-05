@@ -342,8 +342,9 @@ const TextContent: React.FC = () => {
   const [data, setData] = useState<ListItem[]>(NewList2);
 
   const generateId = (parentId: number[]) => {
-    parentId.push(1);
-    return parentId;
+    const newChildId = JSON.parse(JSON.stringify(parentId));
+    newChildId.push(1);
+    return newChildId;
   };
   /*
   const callForNewItem = () => {
@@ -355,9 +356,45 @@ const TextContent: React.FC = () => {
   };
 */
   const addItem = (parentId: number[]) => {
+    console.log(parentId);
     let newId: number[] = generateId(parentId);
+    console.log(parentId);
     let newName = "";
 
+    /*
+    const addItemRecursively = (
+      items: ListItem[],
+      parentId: number[]
+    ): ListItem[] => {
+      return items.map((item) => {
+        inde
+        if (item.id === parentId) {
+          if (item.children) {
+            //newId[newId.length - 1] += item.children.length;
+            let CountOfChildren = 1;
+            item.children.map((subItem) => {
+              console.log(item.name, item.id, subItem.name, subItem.id);
+              subItem.id[subItem.id.length - 1] = CountOfChildren;
+              CountOfChildren += 1;
+            });
+          }
+
+          return {
+            ...item,
+            children: item.children
+              ? [...item.children, { id: newId, name: newName, children: [] }]
+              : [{ id: newId, name: newName, children: [] }],
+          };
+        }
+
+        return item.children
+          ? { ...item, children: addItemRecursively(item.children, parentId) }
+          : item;
+      });
+    };
+    */
+
+    let IndexCount = 0;
     const addItemRecursively = (
       items: ListItem[],
       parentId: number[]
@@ -365,8 +402,15 @@ const TextContent: React.FC = () => {
       return items.map((item) => {
         if (item.id === parentId) {
           if (item.children) {
-            newId[newId.length - 1] += item.children.length;
+            //newId[newId.length - 1] += item.children.length;
+            let CountOfChildren = 1;
+            item.children.map((subItem) => {
+              console.log(item.name, item.id, subItem.name, subItem.id);
+              subItem.id[subItem.id.length - 1] = CountOfChildren;
+              CountOfChildren += 1;
+            });
           }
+
           return {
             ...item,
             children: item.children
@@ -384,8 +428,37 @@ const TextContent: React.FC = () => {
     setData(addItemRecursively(data, parentId));
   };
 
+  /*
+    const FullAdder = (ListToBeAddedHere: ListItem[]) => {
+      const AddItemRecursively = (
+        ListToBeAdded: ListItem[],
+        IndexNumber: number = 0
+      ) => {
+        console.log(IndexNumber);
+        if (IndexNumber + 1 === newId.length) {
+          //ListToBeBuilt[item.id[IndexNumber]].children.push({
+          console.log(IndexNumber);
+          ListToBeAdded.push({
+            name: newName,
+            id: newId,
+            children: [],
+          });
+        } else {
+          AddItemRecursively(
+            ListToBeAdded[newId[IndexNumber] - 1].children,
+            IndexNumber + 1
+          );
+        }
+      };
+      AddItemRecursively(ListToBeAddedHere[0].children);
+      return data;
+    };
+
+    setData(FullAdder(data) || InitialList);
+  };
+*/
   const removeItem = (id: number[]) => {
-    if (id[1] == 0) {
+    if (id[0] == 0) {
       return null;
     }
     const removeItemRecursively = (

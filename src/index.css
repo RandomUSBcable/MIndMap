@@ -85,6 +85,16 @@ textarea, input{
   padding:1vh;
 }
 
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+textarea {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 textarea:focus, input:focus {
 
   background-color: inhert;
