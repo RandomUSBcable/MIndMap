@@ -204,7 +204,7 @@ interface ListItem {
   children: ListItem[];
 }
 
-import React, { Children, useState } from "react";
+import React, { useState } from "react";
 import SortTheNoteList from "./SortTheNoteList";
 
 const InitialList: ListItem[] = [
@@ -276,7 +276,6 @@ const BuildListFromStorage = (
   StoredText: StoredListType[],
   BuiltList: ListItem[] = []
 ) => {
-  let countLeft = StoredText.length;
   StoredText.map((item) => {
     if (item.id[0] === 0) {
       BuiltList.push({
