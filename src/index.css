@@ -41,6 +41,7 @@ body{
   margin: 0;
   padding: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold;
 }
 
 .container{
@@ -48,7 +49,7 @@ body{
 }
 
 .Header{
-  background-color: #1B1A55;
+  background-color: #535C91;
   margin: 0;
   height: 10vh;
   width: 100%;
@@ -63,14 +64,25 @@ body ::spelling-error {
 }
 
 .Body{
-  background-color: #720455;
+  background-color: #9290C3;
   box-shadow: inset 0 0 3vh 0 black;
-  height: 75vh;
+  height: 80vh;
+  overflow: scroll;
+}
+
+.Body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.Body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .Footer{
-  background-color: #1B1A55;
-  height: 15vh;
+  background-color: #535C91;
+  height: 10vh;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -81,8 +93,9 @@ textarea, input{
   border: none;
   background-color: inherit;
   border-radius: 1vh;
-
+font-weight: bold;
   padding:1vh;
+  overflow: hidden;
 }
 
 textarea::-webkit-scrollbar {
@@ -110,6 +123,7 @@ input, select, textarea{
   border: solid;
   width: 3ch;
   border-radius: 0.5ch;
+  background-color: #242424;
 }
 
 .ButtonI{
@@ -117,6 +131,7 @@ input, select, textarea{
   border: solid;
   width: 3ch;
   border-radius: 0.5ch;
+  background-color: #242424;
 }
 
 .ButtonU{
@@ -124,6 +139,7 @@ input, select, textarea{
   border: solid;
   width: 3ch;
   border-radius: 0.5ch;
+  background-color: #242424;
 }
 
 .ButtonHolder{
@@ -173,8 +189,13 @@ ul{
 
 .Button{
   border-radius: 2ch;
+  background-color: #242424;
 }
 
 .LogoHolder{
+  padding: 0 5vw;
+}
+
+.MenuHolder{
   padding: 0 5vw;
 }

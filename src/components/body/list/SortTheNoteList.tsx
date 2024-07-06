@@ -184,9 +184,6 @@ const SortTheNoteList: React.FC<RecursiveListProps> = ({
             </li>
             <div className="EditButtons">
               <button className="Button" onClick={() => onAdd(item.id)}>
-                e
-              </button>
-              <button className="Button" onClick={() => onAdd(item.id)}>
                 +
               </button>
               <button className="Button" onClick={() => onRemove(item.id)}>

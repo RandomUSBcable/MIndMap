@@ -1,10 +1,11 @@
 import Logo from "./header/Logo";
+import Menu from "./header/Menu";
 
 function Header() {
   return (
     <div className="Header">
       <Logo />
-      <div>Menu</div>
+      <Menu />
     </div>
   );
 }
