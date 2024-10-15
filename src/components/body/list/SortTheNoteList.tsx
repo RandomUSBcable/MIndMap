@@ -162,7 +162,7 @@ interface RecursiveListProps {
 }
 
 const HandleClick = (item: ListItem) => {
-  console.log(item.id);
+  console.log(item.id, item.name);
 };
 
 const SortTheNoteList: React.FC<RecursiveListProps> = ({
