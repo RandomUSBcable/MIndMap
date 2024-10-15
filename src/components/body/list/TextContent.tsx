@@ -204,7 +204,7 @@ interface ListItem {
   children: ListItem[];
 }
 
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import SortTheNoteList from "./SortTheNoteList";
 
 const InitialList: ListItem[] = [
@@ -329,18 +329,16 @@ const BuildListFromStorage = (
         IndexNumber: number = 0
       ) => {
         if (IndexNumber + 1 === item.id.length) {
-          console.log("done");
-          ListToBeBuilt.unshift(
-            {
-              id: item.id,
-              name: item.name,
-              children: [],
-            },
-            ...ListToBeBuilt
-          );
+          console.log("done", item.id, ListToBeBuilt);
+          ListToBeBuilt.unshift({
+            id: item.id,
+            name: item.name,
+            children: [],
+          });
         } else {
+          console.log(ListToBeBuilt[item.id[IndexNumber] - 1]);
           PushItemsrecursively(
-            ListToBeBuilt[item.id[IndexNumber] - 1].children,
+            ListToBeBuilt[ListToBeBuilt.length - item.id[IndexNumber]].children,
             IndexNumber + 1
           );
         }
@@ -374,26 +372,25 @@ const NewList2: ListItem[] = BuildListFromStorage(NewList);
 const TextContent: React.FC = () => {
   const [data, setData] = useState<ListItem[]>(NewList2);
 
-  const generateId = (parentId: number[]) => {
-    const newChildId = JSON.parse(JSON.stringify(parentId));
-    newChildId.push(1);
-    return newChildId;
-  };
-
-  const addItem = (parentID: number[], fullList: ListItem[] = NewList2) => {
+  const addItem = (parentID: number[], fullList: ListItem[] = data) => {
     console.log("Adding item....");
     const addItemRecursively = (item: ListItem, IndexCount: number = 0) => {
-      if (item.id.length == parentID.length) {
+      if (item.id[0] != 0 && item.id.length == parentID.length) {
         const newID = [...parentID, item.children.length];
-        item.children.unshift({ name: "", id: newID, children: [] });
-        return fullList;
+        //item.children.unshift({ name: "", id: newID, children: [] });
+        item.children = [
+          { name: "", id: newID, children: [] },
+          ...item.children,
+        ];
+        console.log("Added item");
+        return [...fullList];
       } else {
         addItemRecursively(
           item.children[item.children.length - parentID[IndexCount]]
         );
       }
     };
-    addItemRecursively(data[0]);
+    setData(addItemRecursively(data[0]) || data);
   };
 
   /*
